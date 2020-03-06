@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "target": "ES2017",
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "outDir": "dist",
+        "paths": {
+            "*": [ "./*" ],
+        },
+        "types": ["node", "chai", "@wdio/sync"]
+    },    
+    "include": [
+        "./src/**/*.ts",
+        "./config/**/*.ts"
+    ],
+    "exclude": [
+      "./node_modules"
+    ],
+    "compileOnSave": false
+}

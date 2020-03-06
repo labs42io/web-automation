@@ -1,0 +1,6 @@
+.vscode
+node_modules
+report
+.dockerignore
+.gitignore
+Dockerfile

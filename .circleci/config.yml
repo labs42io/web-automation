@@ -1,0 +1,37 @@
+version: 2
+
+orbs:
+  docker: circleci/docker@1.0.0
+
+jobs:
+   e2e-tests:
+    executor: docker/docker
+    working_directory: ~/project
+
+    steps:
+      - checkout:
+          path: ~/project
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Pull docker images
+          command: docker-compose -f docker-compose.ci.yml pull
+          no_output_timeout: 1m
+      - run:
+          name: Build docker images
+          command: docker-compose -f docker-compose.ci.yml build
+          no_output_timeout: 2m
+      - run:
+          name: Run tests
+          command: docker-compose -f docker-compose.ci.yml up --abort-on-container-exit --exit-code-from node
+          no_output_timeout: 2m
+      - run:
+          name: Copy report
+          command: docker cp e2e-tests-container:/usr/app/report/cucumber/html/. ~/report
+      - store_artifacts:
+          path: ~/report
+
+workflows:
+    e2e-tests:
+      jobs:
+        - e2e-tests

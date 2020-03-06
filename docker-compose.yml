@@ -1,0 +1,54 @@
+version: "3.4"
+services:
+  selenium-hub:
+    image: selenium/hub:${SELENIUM_VERSION}
+    ports:
+      - "4444:4444"
+    healthcheck:
+      test: ["CMD", "/opt/bin/check-grid.sh", "--host", "0.0.0.0", "--port", "4444"]
+      interval: 15s
+      timeout: 15s
+      retries: 3
+      start_period: 30s
+
+  chrome:
+    image: selenium/node-chrome:${SELENIUM_VERSION}
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      - START_XVFB=false
+    ports:
+      - "5555:5555"
+    healthcheck:
+      test: ["CMD", "/opt/bin/check-grid.sh", "--host", "0.0.0.0", "--port", "5555"]
+      interval: 15s
+      timeout: 15s
+      retries: 3
+      start_period: 30s
+    depends_on: 
+      - selenium-hub
+
+  firefox:
+    image: selenium/node-firefox:${SELENIUM_VERSION}
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      - START_XVFB=false
+    ports:
+      - "5556:5555"
+    healthcheck:
+      test: ["CMD", "/opt/bin/check-grid.sh", "--host", "0.0.0.0", "--port", "5555"]
+      interval: 15s
+      timeout: 15s
+      retries: 3
+      start_period: 30s
+    depends_on: 
+      - selenium-hub

@@ -1,0 +1,19 @@
+{
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "files.exclude": {
+      "**/.git": true,
+      "**/node_modules": true,
+      "**/dist": true,
+  },
+  "[typescript]": {
+      "editor.formatOnSave": true,
+      "editor.formatOnPaste": true
+  },
+  "[markdown]": {
+      "editor.formatOnSave": true,
+      "editor.renderWhitespace": "all",
+      "editor.acceptSuggestionOnEnter": "off"
+  },
+  "editor.autoIndent": "full",
+  "typescript.preferences.importModuleSpecifier": "relative",
+}

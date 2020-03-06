@@ -1,0 +1,57 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+      {
+          "label": "selenium: start",
+          "type": "shell",
+          "command": "npm run selenium",
+          "group": "build",
+          "problemMatcher": [
+              "$tsc"
+          ],
+          "presentation": {
+              "reveal": "always",
+              "panel": "shared"
+          }
+      },
+      {
+          "label": "selenium: start vnc",
+          "type": "shell",
+          "command": "npm run selenium:vnc",
+          "group": "build",
+          "problemMatcher": [
+              "$tsc"
+          ],
+          "presentation": {
+              "reveal": "always",
+              "panel": "shared"
+          }
+      },
+      {
+        "label": "selenium: stop",
+        "type": "shell",
+        "command": "npm run selenium:stop",
+        "group": "build",
+        "problemMatcher": [
+            "$tsc"
+        ],
+        "presentation": {
+            "reveal": "always",
+            "panel": "shared"
+        }
+      },
+      {
+          "label": "test",
+          "type": "shell",
+          "command": "npm run test",
+          "group": "test",
+          "problemMatcher": [
+              "$tsc"
+          ],
+          "presentation": {
+              "reveal": "always",
+              "panel": "new"
+          },
+      }
+  ]
+}
