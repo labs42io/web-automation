@@ -274,11 +274,11 @@ npm run ci:build
 npm run ci
 ```
 
-### CircleCI
+|CI|Status|Config|Artifacts|
+|--|--|--|--|
+|CircleCI| [![CircleCI](https://circleci.com/gh/labs42io/web-automation/tree/master.svg?style=svg)](https://circleci.com/gh/labs42io/web-automation/tree/master) |`./.circleci/default.yml`|Report uploaded as artifacts and can be viewed directly in the browser.|
+|Github Actions| ![CI](https://github.com/labs42io/web-automation/workflows/CI/badge.svg?branch=master%2Fgithub-actions) |`./.github/workflows/main.yml`|Report files available as a downloadable zip in artifacts. |
 
-There is an example of integration with CircleCI in `.circleci/config.yml` file. It is configured to attach the generated report
-as an artifact so that it can be viewed directly in the browser.
-
-## Licensing
+## License
 
 [MIT](LICENSE)
