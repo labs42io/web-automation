@@ -11,7 +11,7 @@ The docker selenium simplifies the setup and avoids any local installations of b
 ## Features
 
 - Simple setup, no need for local preinstalled Selenium Grid and browser drivers
-- Test with *Firefox* and *Chrome* with zero configuration
+- Test with *Chrome* and *Firefox* with zero configuration
 - Integrated with [WebdriverIO](https://webdriver.io/)
 - BDD tests with [Cucumber](https://cucumber.io/docs/cucumber/) and over 150 predefined steps
 - Implement custom steps with [TypeScript](https://www.typescriptlang.org/)
@@ -23,7 +23,7 @@ The docker selenium simplifies the setup and avoids any local installations of b
 ## Requirements
 
 - To run *Firefox* and *Chrome* browsers with docker selenium you need:
-  - `Docker`
+  - `docker`
   - `docker-compose`
 
 - Tests are executed with Node.js, requires:
@@ -32,35 +32,33 @@ The docker selenium simplifies the setup and avoids any local installations of b
 
 ## Quick start
 
-Firstly, install all the dependencies required to run the tests:
+1. Install dependencies required to run the tests:
 
 ```sh
 npm install
 ```
 
-To run the tests, you need the browsers ready to execute instructions. Browsers run on top of selenium in docker containers.
-Start selenium locally (in the background) with `docker-compose`:
+2. Start docker selenium containers with `docker-compose`:
 
 ```sh
 # starts the selenium hub and browser nodes in docker containers
 npm run selenium
 ```
 
-Once you have all the prerequisites you can run the tests and view a generated report:
+3. Run the tests and view the report:
 
 ```sh
 # run tests and open the report
 npm run test
 ```
 
-If you want to stop the selenium containers:
+To stop all the docker containers from step 2:
 
 ```sh
 npm run selenium:stop
 ```
 
-Note that selenium containers don't need to be started and stopped for each test run. You can start selenium containers once and then run and debug
-the tests multiple times as if you had browsers installed locally.
+Note that selenium containers can be started once and then used across multiple sessions of running and debugging tests.
 
 ## Test examples
 
@@ -71,7 +69,7 @@ the tests multiple times as if you had browsers installed locally.
 
 ## Adding tests
 
-Tests are written using [Gherkin syntax](https://cucumber.io/docs/gherkin/) in a fashion that can be used as feature documentation. An example of testing the Google search is implemented in `./src/features/google.search.feature`.  
+Tests are written using [Gherkin syntax](https://cucumber.io/docs/gherkin/) in a fashion that can be used as feature documentation:
 
 ```gherkin
 # This is a single line comment
@@ -90,9 +88,8 @@ Feature: Performing a Google Search
         Then I expect that element "#search" becomes displayed
 ```
 
-All tests should be located in `./src/features/*` directory and have the extension `.feature`.
-This is configured in `./config/tests.config.ts`.  
-For a list of predefined steps see files:
+All tests should be located in `./src/features/*` directory with extension `.feature` (configured in `./config/tests.config.ts`).  
+For a list of predefined and supported steps see files:
 - `./src/steps/given.ts` 
 - `./src/steps/when.ts` 
 - `./src/steps/then.ts`.  
@@ -108,7 +105,7 @@ See the [documentation](https://webdriver.io/docs/api.html) for a list of suppor
 Assertions are written using [chai](https://www.chaijs.com/). 
 
 ### Browser specific tests
-To run a test using only a specific browser, you can use [tags](https://cucumber.io/docs/cucumber/api/#tags):
+To run a test against a specific browser use [tags](https://cucumber.io/docs/cucumber/api/#tags):
 
 ```gherkin
 Feature: Performing a Google Search
@@ -162,9 +159,6 @@ Hooks are blocks of code that can run at various points in the Cucumber executio
 See examples of scenario hooks in `./src/steps/hooks.ts`. For a more advanced usage, configure hooks in 
 `./config/hooks.config.ts`.  
 
-There is an `afterStep` hook implemented in  `./config/hooks.config.ts` that takes a screenshot and attaches 
-it to the report in case the test fails.
-
 You can customize existing hooks or implement your own.
 See the WebdriverIO [documentation]((https://webdriver.io/docs/options.html#hooks)) about hooks. 
 
@@ -181,18 +175,26 @@ The configurable options are set in the `.env` file.
 
 ### WebdriverIO options
 
-WebdriverIO specific [options](https://webdriver.io/docs/options.html) are all in `./config` directory. 
+WebdriverIO specific [options](https://webdriver.io/docs/options.html) are all in `./config` directory.  
+For example, to configure a default url change the `baseUrl` option in `./config/index.ts`:  
+
+```typescript
+export const config = {
+  runner: 'local',
+  baseUrl: 'https://webdriver.io',
+  ...
+```
 
 ## Debugging tests
 
-There is a `./.vscode/launch.json` file that has debugger configuration for *Visual Studio Code*, but you can enable debugging in any other editor
+There is a `./.vscode/launch.json` file that has a debugger configuration for *Visual Studio Code*, but you can enable debugging in any other editor
 that supports integration with Node.js debugger.  
 
 To debug a single feature file:
 
 - *Prerequisites*: selenium containers are running (`npm run selenium`)
 
-- In VS Code the `.feature` file is active
+- The `.feature` file to test is active in VS Code
 
 - From VS Code *Run and Debug* menu select the *Debug current test* option
 
@@ -202,7 +204,7 @@ To debug all files follow the same steps but use the *Debug all tests* option.
 
 ## VNC support
 
-In some cases, you might need to visually see the execution in the browser. That is possible thanks to *Selenium* docker debug images that 
+In some cases, you might need to visually see the execution in the browser. That is possible thanks to docker selenium debug images that 
 have `XVFB` and `VNC` server installed. Note that debug images are slower and are intended only for development mode.  
 
 ### Prerequisites
@@ -237,7 +239,7 @@ Now you can connect and enter to the remote session.
 ### Running tests
 
 Tests by default run in *headless* mode so that a browser window is not visually created.
-To run the tests and see the browser window:
+To run the tests with enabled browser window:
 
 ```sh
 # runs the tests without headless option
@@ -249,7 +251,7 @@ Note that even if you started selenium with VNC support, you need to run the `te
 Debugging with VNC support is also possible. If you're using *Visual Studio Code* there are `VNC Debug current test` and 
 `VNC Debug all tests` debugging configurations that work similar to configurations described in [Debugging tests](#debugging-tests) section.  
 
-Stopping the selenium debug containers is similar to regular containers:
+To stop the debug containers use the same command:
 
 ```sh
 npm run selenium:stop
@@ -277,7 +279,7 @@ npm run ci
 
 |CI|Status|Config|Artifacts|
 |--|--|--|--|
-|**CircleCI**| [![CircleCI](https://circleci.com/gh/labs42io/web-automation/tree/master.svg?style=svg)](https://circleci.com/gh/labs42io/web-automation/tree/master) |`./.circleci/default.yml`|Report uploaded as artifacts and can be viewed directly in the browser.|
+|**CircleCI**| [![CircleCI](https://circleci.com/gh/labs42io/web-automation/tree/master.svg?style=svg)](https://circleci.com/gh/labs42io/web-automation/tree/master) |`./.circleci/default.yml`|Report uploaded as artifacts that can be viewed directly in the browser.|
 |**Github Actions**| [![CI](https://github.com/labs42io/web-automation/workflows/CI/badge.svg)](https://github.com/labs42io/web-automation/actions) |`./.github/workflows/main.yml`|Report files available as a downloadable zip in artifacts. |
 |**TravisCI**| [![Build Status](https://travis-ci.org/labs42io/web-automation.svg?branch=master)](https://travis-ci.org/labs42io/web-automation) |`./.travis.yml`|You need to configure Amazon S3 account to enable artifacts. |
 
