@@ -68,7 +68,7 @@ function* fromGithubActions() {
   }
 
   if (process.env.GITHUB_REF) {
-    yield { label: 'Branch', value: process.env.GITHUB_REF?.replace('refs/heads/', '') };
+    yield { label: 'Branch', value: process.env.GITHUB_REF.replace('refs/heads/', '') };
   }
 
   if (process.env.GITHUB_SHA) {
