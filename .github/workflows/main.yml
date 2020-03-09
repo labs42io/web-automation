@@ -20,9 +20,9 @@ jobs:
       run: docker-compose -f docker-compose.ci.yml up --abort-on-container-exit --exit-code-from node
     
     - name: Copy report
-      run: docker cp e2e-tests-container:/usr/app/report/cucumber/html/. ~/report
+      run: docker cp e2e-tests-container:/usr/app/report/cucumber/html/. report
        
     - uses: actions/upload-artifact@v1 
       with:
         name: report
-        path: ${HOME}/report 
+        path: report
