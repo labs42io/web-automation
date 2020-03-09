@@ -1,6 +1,7 @@
 # Web Automation Framework
 
-[![CircleCI](https://circleci.com/gh/labs42io/web-automation/tree/master.svg?style=svg)](https://circleci.com/gh/labs42io/web-automation/tree/master)  
+[![CircleCI](https://circleci.com/gh/labs42io/web-automation/tree/master.svg?style=svg)](https://circleci.com/gh/labs42io/web-automation/tree/master) 
+![CI](https://github.com/labs42io/web-automation/workflows/CI/badge.svg?branch=master%2Fgithub-actions)  
 
 Boilerplate project to write BDD tests with [Cucumber](https://cucumber.io/) and execute with [docker selenium](https://github.com/SeleniumHQ/docker-selenium).
 Tests are written in an ordinary language that removes the gap between business and technical people.
