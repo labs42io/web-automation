@@ -1,0 +1,24 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Pull docker images
+      run: docker-compose -f docker-compose.ci.yml pull
+
+    - name: Build docker images
+      run: docker-compose -f docker-compose.ci.yml build
+
+    - name: Run tests
+      run: docker-compose -f docker-compose.ci.yml up --abort-on-container-exit --exit-code-from node
+
+    - uses: actions/upload-artifact@v1 
+      with:
+        name: report
+        path: report

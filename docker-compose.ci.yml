@@ -40,9 +40,15 @@ services:
     environment:
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
+      - CIRCLECI=${CIRCLECI}
       - CIRCLE_BRANCH=${CIRCLE_BRANCH}
       - CIRCLE_SHA1=${CIRCLE_SHA1}
       - CIRCLE_BUILD_NUM=${CIRCLE_BUILD_NUM}
+      - CIRCLE_BUILD_URL=${CIRCLE_BUILD_URL}
+      - GITHUB_ACTIONS=${GITHUB_ACTIONS}
+      - GITHUB_REF=${GITHUB_REF}
+      - GITHUB_SHA=${GITHUB_SHA}
+      - GITHUB_RUN_NUMBER=${GITHUB_RUN_NUMBER}
     depends_on:
       - chrome
       - firefox

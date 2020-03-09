@@ -35,7 +35,9 @@ report.generate({
 });
 
 function addCIMetadata(customData) {
-  customData.data = customData.data.concat(fromCircleCI());
+  customData.data = customData.data
+    .concat(...fromCircleCI())
+    .concat(...fromGithubActions());
   return customData;
 }
 
@@ -59,3 +61,22 @@ function* fromCircleCI() {
     };
   }
 }
+
+function* fromGithubActions() {
+  if (process.env.GITHUB_ACTIONS) {
+    yield { label: 'CI', value: 'Github Actions' };
+  }
+
+  if (process.env.GITHUB_REF) {
+    yield { label: 'Branch', value: process.env.GITHUB_REF.replace('refs/heads/', '') };
+  }
+
+  if (process.env.GITHUB_SHA) {
+    yield { label: 'Commit', value: process.env.GITHUB_SHA }
+  }
+
+  if (process.env.GITHUB_RUN_NUMBER) {
+    yield { label: 'Run', value:  process.env.GITHUB_RUN_NUMBER };
+  }
+}
+
