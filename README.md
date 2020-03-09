@@ -1,7 +1,7 @@
 # Web Automation Framework
 
 [![CircleCI](https://circleci.com/gh/labs42io/web-automation/tree/master.svg?style=svg)](https://circleci.com/gh/labs42io/web-automation/tree/master) 
-![CI](https://github.com/labs42io/web-automation/workflows/CI/badge.svg?branch=master%2Fgithub-actions)  
+[![CI](https://github.com/labs42io/web-automation/workflows/CI/badge.svg)](https://github.com/labs42io/web-automation/actions)  
 
 Boilerplate project to write BDD tests with [Cucumber](https://cucumber.io/) and execute with [docker selenium](https://github.com/SeleniumHQ/docker-selenium).
 Tests are written in an ordinary language that removes the gap between business and technical people.
@@ -276,8 +276,8 @@ npm run ci
 
 |CI|Status|Config|Artifacts|
 |--|--|--|--|
-|CircleCI| [![CircleCI](https://circleci.com/gh/labs42io/web-automation/tree/master.svg?style=svg)](https://circleci.com/gh/labs42io/web-automation/tree/master) |`./.circleci/default.yml`|Report uploaded as artifacts and can be viewed directly in the browser.|
-|Github Actions| ![CI](https://github.com/labs42io/web-automation/workflows/CI/badge.svg?branch=master%2Fgithub-actions) |`./.github/workflows/main.yml`|Report files available as a downloadable zip in artifacts. |
+|**CircleCI**| [![CircleCI](https://circleci.com/gh/labs42io/web-automation/tree/master.svg?style=svg)](https://circleci.com/gh/labs42io/web-automation/tree/master) |`./.circleci/default.yml`|Report uploaded as artifacts and can be viewed directly in the browser.|
+|**Github Actions**| [![CI](https://github.com/labs42io/web-automation/workflows/CI/badge.svg)](https://github.com/labs42io/web-automation/actions) |`./.github/workflows/main.yml`|Report files available as a downloadable zip in artifacts. |
 
 ## License
 
