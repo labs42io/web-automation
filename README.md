@@ -1,7 +1,8 @@
 # Web Automation Framework
 
 [![CircleCI](https://circleci.com/gh/labs42io/web-automation/tree/master.svg?style=svg)](https://circleci.com/gh/labs42io/web-automation/tree/master) 
-[![CI](https://github.com/labs42io/web-automation/workflows/CI/badge.svg)](https://github.com/labs42io/web-automation/actions)  
+[![CI](https://github.com/labs42io/web-automation/workflows/CI/badge.svg)](https://github.com/labs42io/web-automation/actions) 
+[![Build Status](https://travis-ci.org/labs42io/web-automation.svg?branch=master)](https://travis-ci.org/labs42io/web-automation)  
 
 Boilerplate project to write BDD tests with [Cucumber](https://cucumber.io/) and execute with [docker selenium](https://github.com/SeleniumHQ/docker-selenium).
 Tests are written in an ordinary language that removes the gap between business and technical people.
@@ -278,6 +279,7 @@ npm run ci
 |--|--|--|--|
 |**CircleCI**| [![CircleCI](https://circleci.com/gh/labs42io/web-automation/tree/master.svg?style=svg)](https://circleci.com/gh/labs42io/web-automation/tree/master) |`./.circleci/default.yml`|Report uploaded as artifacts and can be viewed directly in the browser.|
 |**Github Actions**| [![CI](https://github.com/labs42io/web-automation/workflows/CI/badge.svg)](https://github.com/labs42io/web-automation/actions) |`./.github/workflows/main.yml`|Report files available as a downloadable zip in artifacts. |
+|**TravisCI**| [![Build Status](https://travis-ci.org/labs42io/web-automation.svg?branch=master)](https://travis-ci.org/labs42io/web-automation) |`./.travis.yml`|You need to configure Amazon S3 account to enable artifacts. |
 
 ## License
 

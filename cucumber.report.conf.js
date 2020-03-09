@@ -37,7 +37,8 @@ report.generate({
 function addCIMetadata(customData) {
   customData.data = customData.data
     .concat(...fromCircleCI())
-    .concat(...fromGithubActions());
+    .concat(...fromGithubActions())
+    .concat(...fromTravis());
   return customData;
 }
 
@@ -80,3 +81,23 @@ function* fromGithubActions() {
   }
 }
 
+function* fromTravis() {
+  if (process.env.TRAVIS) {
+    yield { label: 'CI', value: 'TravisCI' };
+  }
+
+  if (process.env.TRAVIS_BRANCH) {
+    yield { label: 'Branch', value: process.env.TRAVIS_BRANCH }
+  }
+
+  if (process.env.TRAVIS_COMMIT) {
+    yield { label: 'Commit', value: process.env.TRAVIS_COMMIT };
+  }
+
+  if (process.env.TRAVIS_BUILD_NUMBER) {
+    yield {
+      label: 'Build',
+      value: `<a href="${process.env.TRAVIS_BUILD_WEB_URL}" target="_blank">${process.env.TRAVIS_BUILD_NUMBER}</a>`
+    };
+  }
+}

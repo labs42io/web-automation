@@ -49,6 +49,11 @@ services:
       - GITHUB_REF=${GITHUB_REF}
       - GITHUB_SHA=${GITHUB_SHA}
       - GITHUB_RUN_NUMBER=${GITHUB_RUN_NUMBER}
+      - TRAVIS=${TRAVIS}
+      - TRAVIS_BRANCH=${TRAVIS_BRANCH}
+      - TRAVIS_COMMIT=${TRAVIS_COMMIT}
+      - TRAVIS_BUILD_NUMBER=${TRAVIS_BUILD_NUMBER}
+      - TRAVIS_BUILD_WEB_URL=${TRAVIS_BUILD_WEB_URL}
     depends_on:
       - chrome
       - firefox
