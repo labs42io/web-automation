@@ -9,19 +9,18 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
     - name: Pull docker images
       run: docker-compose -f docker-compose.ci.yml pull
 
     - name: Build docker images
       run: docker-compose -f docker-compose.ci.yml build
-    
+
     - name: Run tests
       run: docker-compose -f docker-compose.ci.yml up --abort-on-container-exit --exit-code-from node
-    
+
     - name: Copy report
-      run: docker cp e2e-tests-container:/usr/app/report/cucumber/html/. report
-       
+      run: mkdir report && chmod 755 report && docker cp e2e-tests-container:/usr/app/report/cucumber/html/. report
+
     - uses: actions/upload-artifact@v1 
       with:
         name: report
