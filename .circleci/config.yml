@@ -11,8 +11,7 @@ jobs:
     steps:
       - checkout:
           path: ~/project
-      - setup_remote_docker:
-          docker_layer_caching: true
+      - setup_remote_docker
       - run:
           name: Pull docker images
           command: docker-compose -f docker-compose.ci.yml pull
