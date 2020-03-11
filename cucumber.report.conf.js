@@ -39,6 +39,7 @@ function addCIMetadata(customData) {
     .concat(...fromCircleCI())
     .concat(...fromGithubActions())
     .concat(...fromTravis());
+
   return customData;
 }
 
