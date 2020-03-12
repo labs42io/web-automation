@@ -1,0 +1,24 @@
+/^Öppna (url|site) "([^"]*)?"$/,
+  openWebsite,
+/^sidelementet "([^"]*)?" är( inte)* displayed$/,
+/^sidelementet "([^"]*)?" är( inte)* aktiverat$/,
+/^sidelementet "([^"]*)?" är( inte)* valt$/,
+/^checkboxen "([^"]*)?" är( inte)* markerad$/,
+/^att (ett|inget) sidelement "([^"]*)?" finns
+/^titlen ( inte)* "([^"]*)?"$/,
+  checkTitle,
+/^sidelementet "([^"]*)?" innehåller( inte)* samma
+/^(knappen|elementet) "([^"]*)?"( inte)* matchar
+/^(knappen|elementet|kontainer) "([^"]*)?"( inte)* innehåller
+/^(knappen|elementet) "([^"]*)?"( inte)* innehåller något
+/^(knappen|elementet) "([^"]*)?" är ( ej)*
+/^sidans adress( ej)* "([^"]*)?"$/,
+  checkUrl
+/^( css)* attributet "([^"]*)?" för elementet "([^"]*)?"
+/^kakan "([^"]*)?" innehåller( inte)* värdet
+/^kakan "([^"]*)?" finns( not)* /,
+/^sidelementet "([^"]*)?" är( inte)* ([\d
+/^sidelementet "([^"]*)?" är( inte)* positionerat vid
+/^skärmen är ([\d]+)
+/^jag stängt det första (fönstret|tabben
+/^en (info|bekräftelse|prompt) finns( ej)*
