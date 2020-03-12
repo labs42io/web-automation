@@ -5,8 +5,8 @@
 [![Build Status](https://travis-ci.org/labs42io/web-automation.svg?branch=master)](https://travis-ci.org/labs42io/web-automation)  
 
 Boilerplate project to write BDD tests with [Cucumber](https://cucumber.io/) and execute with [docker selenium](https://github.com/SeleniumHQ/docker-selenium).
-Tests are written in an ordinary language that removes the gap between business and technical people.
-The docker selenium simplifies the setup and avoids any local installations of browser specific dependencies.
+Tests are written in an ordinary language that bridges the gap between business and technical people.
+The docker selenium simplifies the setup and avoids any local installation of browser specific dependencies.
 
 ## Features
 
@@ -64,7 +64,7 @@ Note that selenium containers can be started once and then used across multiple 
 
 |File||
 |--|--|
-|`./src/features/google.search.feature`|An example to test the Google search|
+|`./src/features/google.search.feature`|An example of testing the Google search|
 |`./src/features/sample.snippets.feature`|Samples of using the existing test snippets. Credits [Christian Bromann](https://github.com/christian-bromann)|
 
 ## Adding tests
@@ -105,7 +105,7 @@ See the [documentation](https://webdriver.io/docs/api.html) for a list of suppor
 Assertions are written using [chai](https://www.chaijs.com/). 
 
 ### Browser specific tests
-To run a test against a specific browser use [tags](https://cucumber.io/docs/cucumber/api/#tags):
+To run a test against a specific browser use predefined [tags](https://cucumber.io/docs/cucumber/api/#tags):
 
 ```gherkin
 Feature: Performing a Google Search
@@ -171,7 +171,7 @@ The configurable options are set in the `.env` file.
 |Variable|Usage|
 |--|--|
 |`SELENIUM_VERSION`|Configure the version of selenium hub and nodes. Change this version if you want to run tests against a specific browser version. See the [list](https://github.com/SeleniumHQ/docker-selenium/releases) of available selenium releases and browser versions.|
-|`SCREEN_WIDTH` `SCREEN_HEIGHT`|Configure browser window resolution.|
+|`SCREEN_WIDTH` `SCREEN_HEIGHT`|Configure browser window size.|
 
 ### WebdriverIO options
 
@@ -234,7 +234,7 @@ npm run selenium:vnc
 |**Firefox**|`127.0.0.1:5901`|
 
 
-Now you can connect and enter to the remote session.  
+Now you can connect and enter the remote session.  
 
 ### Running tests
 
