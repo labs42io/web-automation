@@ -15,6 +15,7 @@ import { selectOptionByIndex } from '../support/action/selectOptionByIndex';
 import { setCookie } from '../support/action/setCookie';
 import { setInputField } from '../support/action/setInputField';
 import { setPromptText } from '../support/action/setPromptText';
+import { switchToFrame } from '../support/action/switchToIframe';
 
 When(
   /^I (click|doubleclick) on the (link|button|element) "([^"]*)?"$/,
@@ -94,4 +95,10 @@ When(
 When(
   /^I move to element "([^"]*)?"(?: with an offset of (\d+),(\d+))*$/,
   moveTo,
+);
+
+
+When(
+  /^I switch to iframe "([^"]*)?"$/,
+  switchToFrame,
 );

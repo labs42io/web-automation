@@ -1,3 +1,5 @@
+import { expect } from 'chai';
+
 /**
  * Check if the given elements text is the same as the given text
  * @param  {String}   elementType   Element type (element or button)
@@ -31,11 +33,11 @@ export function checkEqualsText(elementType: string, selector: string, falseCase
     boolFalseCase = true;
   }
 
-  const text = browser[command](selector);
+  const text = $(selector)[command]();
 
   if (boolFalseCase) {
-    parsedExpectedText.should.not.equal(text);
+    expect(parsedExpectedText).to.not.equal(text);
   } else {
-    parsedExpectedText.should.equal(text);
+    expect(parsedExpectedText).to.equal(text);
   }
 }
